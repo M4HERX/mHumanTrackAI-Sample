@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# PyInstaller build output (the .spec is kept; build/ and dist/ are generated)
+build/
+dist/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

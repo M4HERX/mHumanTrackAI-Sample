@@ -1,0 +1,9 @@
+# The sample core needs nothing but plain Python 3.9 or newer.
+# hand_gestures.py, sample_hands.py, demo.py and the tests all run with no installs.
+
+# Optional, only if you want to run the tests with pytest instead of plain Python:
+# pytest
+
+# Optional, only if you want to feed it a real webcam (see the README):
+# mediapipe
+# opencv-python
