@@ -82,8 +82,14 @@ Python, the camera libraries, and the hand model already bundled inside, so ther
 nothing to install. Open it, hold up a hand, and watch the gesture it reads in real time.
 Press **Q**, the **Escape** key, or the window's close button to quit.
 
-Want to run the same live demo from source instead? With `mediapipe` and `opencv-python`
-installed, run `python webcam_demo.py`.
+Want to run the same live demo from source instead? You first need to install the
+required modules listed in [`requirements.txt`](requirements.txt), otherwise the script
+will not work:
+
+```bash
+pip install -r requirements.txt
+python webcam_demo.py
+```
 
 ## The whole API
 
@@ -113,8 +119,8 @@ Two small ideas make it reliable:
 ## Plug in a real webcam
 
 The sample stays camera free on purpose, but wiring it to a live camera is short. Install
-`mediapipe` and `opencv-python`, then convert each detected hand into the list of pairs
-this code expects:
+the modules from [`requirements.txt`](requirements.txt) with `pip install -r requirements.txt`,
+then convert each detected hand into the list of pairs this code expects:
 
 ```python
 import cv2

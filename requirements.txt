@@ -1,9 +1,14 @@
-# The sample core needs nothing but plain Python 3.9 or newer.
-# hand_gestures.py, sample_hands.py, demo.py and the tests all run with no installs.
+# Modules required to run the mHumanTrackAI hand gesture sample.
+#
+# Install everything with:
+#     pip install -r requirements.txt
+#
+# These are what you need to feed the gesture reader a real webcam through
+# webcam_demo.py. (The core gesture math in hand_gestures.py, sample_hands.py,
+# demo.py and the tests also runs on plain Python 3.9+ on its own.)
+
+mediapipe
+opencv-python
 
 # Optional, only if you want to run the tests with pytest instead of plain Python:
 # pytest
-
-# Optional, only if you want to feed it a real webcam (see the README):
-# mediapipe
-# opencv-python
