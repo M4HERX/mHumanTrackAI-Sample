@@ -27,6 +27,7 @@ What it can tell from a hand:
 * which fingers are up or curled
 * is the hand a **fist** or an **open palm**
 * are two fingertips **pinched** together
+* a single **pointing** finger, or a two finger **peace** sign
 * one short label per hand, ready to map to an action like a left click
 
 ## How a hand becomes 21 points
@@ -96,7 +97,7 @@ hg.is_fist(states)           # True when the four main fingers are curled
 hg.is_open_palm(states)      # True when every finger is spread out
 hg.pinch_distance(points, "thumb", "index")  # 0 means touching, bigger means apart
 
-gesture = hg.detect_gesture(points)     # "IndexPinch", "Fist", "OpenPalm", ...
+gesture = hg.detect_gesture(points)     # "IndexPinch", "Point", "Peace", "Fist", ...
 action  = hg.gesture_to_action(gesture) # "left click", "grab / hold", ...
 ```
 

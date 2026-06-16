@@ -30,6 +30,18 @@ def test_fist_has_all_fingers_down():
     assert not hg.is_open_palm(states)
 
 
+def test_point_is_index_finger_only():
+    states = hg.fingers_up(hands.point())
+    assert states["index"]
+    assert not states["middle"] and not states["ring"] and not states["pinky"]
+
+
+def test_peace_is_index_and_middle():
+    states = hg.fingers_up(hands.peace())
+    assert states["index"] and states["middle"]
+    assert not states["ring"] and not states["pinky"]
+
+
 # pinch distance
 
 def test_index_pinch_brings_thumb_and_index_close():
@@ -61,6 +73,8 @@ def test_pinch_distance_is_the_same_near_or_far():
 def test_detect_gesture_labels_each_pose():
     assert hg.detect_gesture(hands.index_pinch()) == "IndexPinch"
     assert hg.detect_gesture(hands.middle_pinch()) == "MiddlePinch"
+    assert hg.detect_gesture(hands.point()) == "Point"
+    assert hg.detect_gesture(hands.peace()) == "Peace"
     assert hg.detect_gesture(hands.open_palm()) == "OpenPalm"
     assert hg.detect_gesture(hands.fist()) == "Fist"
 
@@ -74,6 +88,14 @@ def test_pinch_wins_over_open_palm():
 
 def test_index_pinch_maps_to_left_click():
     assert hg.gesture_to_action("IndexPinch") == "left click"
+
+
+def test_point_maps_to_move_cursor():
+    assert hg.gesture_to_action("Point") == "move cursor"
+
+
+def test_peace_maps_to_scroll():
+    assert hg.gesture_to_action("Peace") == "scroll"
 
 
 def test_unknown_gesture_does_nothing():

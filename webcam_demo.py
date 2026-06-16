@@ -40,6 +40,8 @@ HAND_BONES = [
 GESTURE_COLOURS = {
     "IndexPinch":  (80, 220, 80),
     "MiddlePinch": (80, 200, 240),
+    "Point":       (255, 160, 60),
+    "Peace":       (200, 80, 255),
     "OpenPalm":    (240, 200, 80),
     "Fist":        (80, 120, 240),
     "Hand":        (200, 200, 200),

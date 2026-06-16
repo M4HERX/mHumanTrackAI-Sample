@@ -117,10 +117,80 @@ def middle_pinch() -> list[tuple[float, float]]:
     return [tuple(point) for point in p]
 
 
+def point() -> list[tuple[float, float]]:
+    """Index finger up on its own, the other fingers curled in. The move-the-cursor pose."""
+    p = _blank()
+    p[0] = [0.50, 0.90]  # wrist
+    p[9] = [0.50, 0.60]  # base of the middle finger, used for hand size
+
+    # thumb tucked in across the palm
+    p[1] = [0.42, 0.80]
+    p[2] = [0.40, 0.74]
+    p[3] = [0.45, 0.72]
+    p[4] = [0.49, 0.72]
+
+    # index reaches straight up: its tip is well above its knuckles, so it reads as open
+    p[5] = [0.45, 0.60]
+    p[6] = [0.45, 0.48]
+    p[7] = [0.45, 0.36]
+    p[8] = [0.45, 0.24]
+
+    # middle, ring and pinky curl down so each tip drops below its knuckle
+    p[10] = [0.50, 0.62]
+    p[11] = [0.50, 0.70]
+    p[12] = [0.50, 0.74]
+    p[13] = [0.55, 0.60]
+    p[14] = [0.55, 0.62]
+    p[15] = [0.55, 0.70]
+    p[16] = [0.55, 0.74]
+    p[17] = [0.60, 0.60]
+    p[18] = [0.60, 0.62]
+    p[19] = [0.60, 0.70]
+    p[20] = [0.60, 0.74]
+
+    return [tuple(point) for point in p]
+
+
+def peace() -> list[tuple[float, float]]:
+    """Index and middle up in a V, the other fingers curled in. The scroll pose."""
+    p = _blank()
+    p[0] = [0.50, 0.90]  # wrist
+    p[9] = [0.50, 0.60]  # base of the middle finger, used for hand size
+
+    # thumb tucked in across the palm
+    p[1] = [0.42, 0.80]
+    p[2] = [0.40, 0.74]
+    p[3] = [0.45, 0.72]
+    p[4] = [0.49, 0.72]
+
+    # index and middle both reach straight up, so both read as open
+    p[5] = [0.45, 0.60]
+    p[6] = [0.45, 0.48]
+    p[7] = [0.45, 0.36]
+    p[8] = [0.45, 0.24]
+    p[10] = [0.50, 0.48]
+    p[11] = [0.50, 0.36]
+    p[12] = [0.50, 0.24]
+
+    # ring and pinky curl down so each tip drops below its knuckle
+    p[13] = [0.55, 0.60]
+    p[14] = [0.55, 0.62]
+    p[15] = [0.55, 0.70]
+    p[16] = [0.55, 0.74]
+    p[17] = [0.60, 0.60]
+    p[18] = [0.60, 0.62]
+    p[19] = [0.60, 0.70]
+    p[20] = [0.60, 0.74]
+
+    return [tuple(point) for point in p]
+
+
 # All the poses with their names, handy for looping in the demo.
 ALL_POSES = {
     "open palm":   open_palm,
     "fist":        fist,
+    "point":       point,
+    "peace":       peace,
     "index pinch": index_pinch,
     "middle pinch": middle_pinch,
 }

@@ -127,12 +127,15 @@ def detect_gesture(points: list[tuple[float, float]]) -> str:
     tips do not count.
 
     If both the index and the middle look pinched at once, we pick the one whose tip
-    the thumb is truly closest to. With no pinch we fall back to the broad poses:
-    open palm, then fist, then a plain "Hand".
+    the thumb is truly closest to. With no pinch we read which fingers are up: an
+    open palm, a fist, a single pointing index, or a two finger peace sign, and fall
+    back to a plain "Hand" when it is none of those.
 
     Returns one of:
         "IndexPinch"   thumb and index touching, used for a left click
         "MiddlePinch"  thumb and middle touching, used for a right click
+        "Point"        index finger up on its own, used to move the cursor
+        "Peace"        index and middle up together, used to scroll
         "OpenPalm"     all fingers spread, a good neutral or stop pose
         "Fist"         all fingers curled
         "Hand"         a hand is there but none of the above
@@ -155,6 +158,14 @@ def detect_gesture(points: list[tuple[float, float]]) -> str:
         return "OpenPalm"
     if is_fist(states):
         return "Fist"
+
+    # index and middle up together, the other fingers curled: a peace sign, used to scroll
+    if states["index"] and states["middle"] and not states["ring"] and not states["pinky"]:
+        return "Peace"
+    # index up on its own, the other fingers curled: a pointing finger, moves the cursor
+    if states["index"] and not states["middle"] and not states["ring"] and not states["pinky"]:
+        return "Point"
+
     return "Hand"
 
 
@@ -163,6 +174,8 @@ def detect_gesture(points: list[tuple[float, float]]) -> str:
 GESTURE_ACTIONS = {
     "IndexPinch": "left click",
     "MiddlePinch": "right click",
+    "Point": "move cursor",
+    "Peace": "scroll",
     "OpenPalm": "neutral (no action)",
     "Fist": "grab / hold",
     "Hand": "no action",
