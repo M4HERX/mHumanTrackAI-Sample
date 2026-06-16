@@ -10,5 +10,9 @@
 mediapipe
 opencv-python
 
+# MediaPipe pulls six in transitively. Older six (< 1.16) breaks on Python 3.10+
+# with "No module named 'six.moves'", so require a version that works there.
+six>=1.16.0
+
 # Optional, only if you want to run the tests with pytest instead of plain Python:
 # pytest
